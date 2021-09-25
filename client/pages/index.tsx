@@ -1,11 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import 'tailwindcss/tailwind.css';
 import Link from 'next/link';
 import { Button } from '@/components/atoms/Button';
+import client from '../apollo-client';
+import { GET_PRODUCT_MANY } from 'gql/product';
+import { TProduct } from 'types/product';
 
-const Home: NextPage = () => {
+const Home: NextPage<{ products: [TProduct] }> = ({ products }) => {
   return (
     <div>
       <Head>
@@ -27,9 +29,29 @@ const Home: NextPage = () => {
         </nav>
       </main>
 
+      <ul>
+        {products.map((product) => (
+          <li key={product._id}>
+            {product.name}:{product.user.name}
+          </li>
+        ))}
+      </ul>
+
       <footer></footer>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: GET_PRODUCT_MANY,
+  });
+
+  return {
+    props: {
+      products: data.productMany,
+    },
+  };
+}
 
 export default Home;

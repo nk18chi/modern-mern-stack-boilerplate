@@ -62,3 +62,9 @@ npm run dev
 ```
 
 http://localhost:8000/graphql
+
+Unit Tests && Integration Tests
+
+```
+npm run test or npm run test:watch
+```

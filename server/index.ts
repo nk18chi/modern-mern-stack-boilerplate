@@ -5,15 +5,15 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import schema from './graphql/schema';
-import connectDatabase from './utils/database';
+import { connectDatabase } from './utils/database';
+import { createApolloServer } from './utils/apolloServer';
 const app = express();
 const PORT = 8000;
 
 connectDatabase();
 
 async function startApollo() {
-  const apolloServer = new ApolloServer({
-    schema,
+  const apolloServer = createApolloServer({
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   });
 

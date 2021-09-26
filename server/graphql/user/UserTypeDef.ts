@@ -3,6 +3,6 @@ export const userTypeDef = `
         user(name: String!): String
     }
     extend type Mutation {
-        createUser(name: String!): String
+        loginUser(email: String!, password: String!): Boolean
     }
 `;

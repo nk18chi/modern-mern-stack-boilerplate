@@ -2,16 +2,10 @@ import { composeWithMongoose } from 'graphql-compose-mongoose';
 import { User } from '../../models/User';
 
 const userResolvers = () => ({
-  Query: {
-    user: async (_: any, { name }: any) => {
-      // you can add some operations
-      return 'query user ' + name;
-    },
-  },
   Mutation: {
-    createUser: async (_: any, { name }: any) => {
+    loginUser: async (_: any, { email, password }: any) => {
       // you can add some operations
-      return 'create user ' + name;
+      return email === 'naoki@example.com' && password === 'password';
     },
   },
 });

@@ -56,5 +56,9 @@ schemaComposer.Query.addFields({
   productMany: ProductTC.getResolver('findMany'),
 });
 
+schemaComposer.Mutation.addFields({
+  userCreateOne: UserTC.getResolver('createOne'),
+});
+
 const schema = schemaComposer.buildSchema();
 export default schema;

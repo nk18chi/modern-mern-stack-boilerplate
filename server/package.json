@@ -1,8 +1,8 @@
 {
   "scripts": {
     "dev": "nodemon index.ts",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --maxWorkers=1",
+    "test:watch": "jest --watchAll --maxWorkers=1"
   },
   "dependencies": {
     "@types/graphql-upload": "^8.0.7",

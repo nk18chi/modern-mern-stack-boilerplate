@@ -22,6 +22,7 @@ export const connectTestDatabase = async () => {
     mongod = await MongoMemoryServer.create();
     const MONGO_TEST_URI = mongod.getUri();
 
+    console.log('MONGO_TEST_URI', MONGO_TEST_URI);
     await connect(MONGO_TEST_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

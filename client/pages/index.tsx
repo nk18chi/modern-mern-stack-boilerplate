@@ -4,7 +4,7 @@ import 'tailwindcss/tailwind.css';
 import Link from 'next/link';
 import { Button } from '@/components/atoms/Button';
 import client from '../apollo-client';
-import { GET_PRODUCT_MANY } from 'gql/product';
+import { GET_PRODUCT_MANY } from '../gql/product';
 import { TProduct } from 'types/product';
 
 const Home: NextPage<{ products: [TProduct] }> = ({ products }) => {
@@ -30,11 +30,12 @@ const Home: NextPage<{ products: [TProduct] }> = ({ products }) => {
       </main>
 
       <ul>
-        {products.map((product) => (
-          <li key={product._id}>
-            {product.name}:{product.user.name}
-          </li>
-        ))}
+        {products &&
+          products.map((product) => (
+            <li key={product._id}>
+              {product.name}:{product.user.name}
+            </li>
+          ))}
       </ul>
 
       <footer></footer>

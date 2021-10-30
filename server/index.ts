@@ -1,14 +1,12 @@
 import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import schema from './graphql/schema';
 import { connectDatabase } from './utils/database';
 import { createApolloServer } from './utils/apolloServer';
 const app = express();
-const PORT = 8000;
+const PORT = 4000;
 
 connectDatabase();
 

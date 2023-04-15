@@ -1,11 +1,30 @@
 import fetch from 'node-fetch';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { MockLink, MockedResponse } from '@apollo/client/testing';
+
+const mocks: MockedResponse[] = [
+  // {
+  //   request: {
+  //     query: GET_PRODUCT_FIND_MANY,
+  //     variables: { limit: 100 },
+  //   },
+  //   result: {
+  //     data: {
+  //       productFindMany: productDummy,
+  //     },
+  //   },
+  // }
+];
 
 const client = new ApolloClient({
-  link: createHttpLink({
-    uri: 'http://server:4000/graphql',
-    fetch: fetch,
-  }),
+  link:
+    process.env.APP_ENV === 'test'
+      ? new MockLink(mocks)
+      : createHttpLink({
+          uri: process.env.API_URL,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          fetch: fetch as any,
+        }),
   cache: new InMemoryCache(),
 });
 

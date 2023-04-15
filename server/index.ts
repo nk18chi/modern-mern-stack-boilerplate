@@ -1,5 +1,4 @@
 import express from 'express';
-import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import cors from 'cors';
 import helmet from 'helmet';
 
@@ -11,9 +10,7 @@ const PORT = 4000;
 connectDatabase();
 
 async function startApollo() {
-  const apolloServer = createApolloServer({
-    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-  });
+  const apolloServer = createApolloServer({});
 
   await apolloServer.start();
   apolloServer.applyMiddleware({
@@ -38,7 +35,7 @@ app.use(
 
 app.use(cors());
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+app.get('/', (_, res) => res.send('Express + TypeScript Server'));
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });

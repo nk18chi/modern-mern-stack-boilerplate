@@ -1,6 +1,6 @@
 ## Environment
 
-- Node v16.7.0
+- Node v16.10.0
 
 ### client
 
@@ -38,7 +38,7 @@ http://localhost:3000/
 http://localhost:4000/graphql
 http://localhost:6006/
 
-#### Troble Shooting
+#### Trouble Shooting
 
 Error
 `mongodb-seed_1: setup.sh: Permission denied`

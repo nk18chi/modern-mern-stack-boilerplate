@@ -28,7 +28,8 @@ services:
       - ./server:/app/server
       - server_node_modules:/app/server/node_modules
     environment:
-      - NODE_ENV=${NODE_ENV:-production}
+      # - NODE_ENV=${NODE_ENV:-production}
+      - NODE_ENV=${NODE_ENV:-developement}
     restart: always
   client:
     build:
@@ -41,7 +42,8 @@ services:
       - client_node_modules:/app/client/node_modules
       - client_next:/app/client/.next
     environment:
-      - NODE_ENV=${NODE_ENV:-production}
+      # - NODE_ENV=${NODE_ENV:-production}
+      - NODE_ENV=${NODE_ENV:-developement}
       - CHOKIDAR_USEPOLLING=true
     ports:
       - 3000:3000

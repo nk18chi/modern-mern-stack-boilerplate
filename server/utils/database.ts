@@ -1,8 +1,7 @@
 import { connect, ConnectOptions, connection, disconnect } from 'mongoose';
-import config from 'config';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
-const MONGO_URI: string = config.get('DATABASE_URL');
+const MONGO_URI: string = process.env.DATABASE_URL ?? '';
 
 export const connectDatabase = async () => {
   try {

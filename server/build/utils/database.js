@@ -8,15 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.disconnectDataBase = exports.clearDataBase = exports.connectTestDatabase = exports.connectDatabase = void 0;
 const mongoose_1 = require("mongoose");
-const config_1 = __importDefault(require("config"));
 const mongodb_memory_server_1 = require("mongodb-memory-server");
-const MONGO_URI = config_1.default.get('DATABASE_URL');
+const MONGO_URI = (_a = process.env.DATABASE_URL) !== null && _a !== void 0 ? _a : '';
 const connectDatabase = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, mongoose_1.connect)(MONGO_URI, {

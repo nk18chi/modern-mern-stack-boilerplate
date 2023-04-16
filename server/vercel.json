@@ -2,10 +2,11 @@
     "version": 2,
     "buildCommand":"yarn build",
     "installCommand": "yarn install",
-    "rewrites": [
-        {
-          "source": "/(.*)",
-          "dest": "build/index.js"
-        }
-      ]
+    "builds": [
+      {
+        "src": "build/index.js",
+        "use": "@vercel/node",
+        "config": { "includeFiles": ["build/**"] }
+      }
+    ]
   }

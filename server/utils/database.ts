@@ -2,7 +2,7 @@ import { connect, ConnectOptions, connection, disconnect } from 'mongoose';
 import config from 'config';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
-const MONGO_URI: string = config.get('DATABASE.URI');
+const MONGO_URI: string = config.get('DATABASE_URL');
 
 export const connectDatabase = async () => {
   try {
@@ -10,7 +10,7 @@ export const connectDatabase = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as ConnectOptions);
-    console.log('Successfuly connected to mongo', MONGO_URI);
+    console.log('Successfully connected to mongo', MONGO_URI);
   } catch (e) {
     console.log('Error connecting to mongo', e);
   }

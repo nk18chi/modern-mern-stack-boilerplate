@@ -2,7 +2,9 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "test": "jest --maxWorkers=1",
-    "test:watch": "jest --watchAll --maxWorkers=1"
+    "test:watch": "jest --watchAll --maxWorkers=1",
+    "build": "tsc",
+    "start": "node build/index.js"
   },
   "dependencies": {
     "apollo-server": "^3.3.0",

@@ -8,5 +8,11 @@
         "use": "@vercel/node",
         "config": { "includeFiles": ["build/**"] }
       }
-    ]
+    ],
+    "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "build/index.js"
+        }
+      ]
   }
